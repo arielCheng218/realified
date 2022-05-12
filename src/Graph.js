@@ -6,6 +6,6 @@ const client = new ApolloClient({
 
 export default class Graph extends Component {
   render() {
-    return <div>Hello kasjdhaljshd!</div>;
+    return <div>Hello world!</div>;
   }
 }
