@@ -1,0 +1,109 @@
+{
+  "nodes": [
+    {
+      "id": "n0",
+      "name": "CO2 Emissions"
+    },
+    {
+      "id": "n1",
+      "name": "Fossil fuels"
+    },
+    {
+      "id": "n2",
+      "name": "Global warming"
+    },
+    {
+      "id": "n3",
+      "name": "Power generation"
+    },
+    {
+      "id": "n4",
+      "name": "Deforestation"
+    },
+    {
+      "id": "n5",
+      "name": "Methane emissions"
+    },
+    {
+      "id": "n6",
+      "name": "Climate change"
+    },
+    {
+      "id": "n7",
+      "name": "Agriculture & meat industry"
+    },
+    {
+      "id": "n8",
+      "name": "Acid rain"
+    },
+    {
+      "id": "n9",
+      "name": "Loss of wildlife"
+    },
+    {
+      "id": "n10",
+      "name": "Extreme natural disasters"
+    },
+    {
+      "id": "n11",
+      "name": "Industry"
+    }
+  ],
+  "links": [
+    {
+      "id": "r0",
+      "fromId": "n1",
+      "toId": "n0"
+    },
+    {
+      "id": "r1",
+      "fromId": "n0",
+      "toId": "n2"
+    },
+    {
+      "id": "r2",
+      "fromId": "n3",
+      "toId": "n1"
+    },
+    {
+      "id": "r3",
+      "fromId": "n4",
+      "toId": "n0"
+    },
+    {
+      "id": "r4",
+      "fromId": "n5",
+      "toId": "n2"
+    },
+    {
+      "id": "r5",
+      "fromId": "n2",
+      "toId": "n6"
+    },
+    {
+      "id": "r6",
+      "fromId": "n7",
+      "toId": "n5"
+    },
+    {
+      "id": "r7",
+      "fromId": "n6",
+      "toId": "n8"
+    },
+    {
+      "id": "r8",
+      "fromId": "n6",
+      "toId": "n9"
+    },
+    {
+      "id": "r9",
+      "fromId": "n6",
+      "toId": "n10"
+    },
+    {
+      "id": "r10",
+      "fromId": "n11",
+      "toId": "n1"
+    }
+  ]
+}

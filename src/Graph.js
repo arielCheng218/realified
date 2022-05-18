@@ -1,11 +1,13 @@
-import React, { Component } from "react";
-import ApolloClient from "apollo-boost";
-const client = new ApolloClient({
-  uri: "[Insert URI of GraphQL endpoint]",
-});
+import React from "react";
+import { v4 as uuid } from "uuid";
+import { useQuery, gql } from "@apollo/client";
+import ForceGraph from "force-graph";
 
-export default class Graph extends Component {
-  render() {
-    return <div>Hello world!</div>;
-  }
+export default function Graph() {
+  return (
+    <div>
+      Hello world!
+      <ForceGraph />
+    </div>
+  );
 }
