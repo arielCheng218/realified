@@ -18,28 +18,13 @@ export default class Graph extends Component {
 
   constructor(props) {
     super(props);
+    this.myRef = React.createRef();
   }
 
   render() {
     return (
       <div>
-        <div>
-          <h1>Graph</h1>
-          <ForceGraph2D
-            backgroundColor="#171c32"
-            linkDirectionalParticleColor={() => "red"}
-            linkDirectionalParticleWidth={6}
-            linkHoverPrecision={10}
-            graphData={{
-              nodes: [{ id: "a" }, { id: "b" }, { id: "c" }],
-              links: [
-                { source: "a", target: "b" },
-                { source: "c", target: "a" },
-              ],
-            }}
-            showNavInfo={true}
-          />
-        </div>
+        <ForceGraph2D graphData={data} nodeOpacity={0.99} ref={this.myRef} />
       </div>
     );
   }
