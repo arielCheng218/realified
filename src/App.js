@@ -4,7 +4,9 @@ import Graph from "./Graph";
 function App() {
   return (
     <div className="App">
-      <header></header>
+      <header>
+        <p>header</p>
+      </header>
       <Graph />
     </div>
   );
