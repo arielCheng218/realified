@@ -12,7 +12,7 @@ import { initialData } from "../data/initialdata.js";
 import { db } from "../firebase-config.js";
 import ForceGraph2D from "react-force-graph-2d";
 
-export default function Graph() {
+export default function Graph({ height, setSelectedNode }) {
   // state variables
   const [data, setData] = useState({ nodes: [], links: [] });
   const [fetched, setFetched] = useState(false);
@@ -20,20 +20,10 @@ export default function Graph() {
   const fgRef = useRef();
 
   useEffect(() => {
-    const tempData = {
-      nodes: null,
-      links: null,
-    };
     // Initial read
-    const queryNodes = getCollectionDocs("nodes").then((q) => {
-      tempData.nodes = q;
-      const queryLinks = getCollectionDocs("links").then((q) => {
-        tempData.links = q;
-        console.log(tempData);
-        setData(tempData);
-        setLinkDistance(fgRef);
-      });
-    });
+    readData();
+    // Graph config
+    setLinkDistance(fgRef);
   }, []);
 
   const writeInitialData = () => {
@@ -51,6 +41,18 @@ export default function Graph() {
       };
       writeDoc("links", data, v4());
     }
+  };
+
+  const readData = () => {
+    const queryNodes = getCollectionDocs("nodes").then((nodes) => {
+      const queryLinks = getCollectionDocs("links").then((links) => {
+        const tempData = {
+          nodes: nodes,
+          links: links,
+        };
+        setData(tempData);
+      });
+    });
   };
 
   const writeDoc = async (c, data, id) => {
@@ -99,7 +101,10 @@ export default function Graph() {
     <div>
       <ForceGraph2D
         graphData={data}
+        height={height}
         linkWidth={2}
+        onNodeClick={(node) => setSelectedNode(node)}
+        backgroundColor={"#eeeeee"}
         ref={fgRef}
         nodeCanvasObject={drawNode}
         nodeLabel={null}
