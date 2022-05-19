@@ -1,73 +1,81 @@
-export const data = {
+import { v4 as uuid, v4 } from "uuid";
+
+const ids = [];
+
+for (var i = 0; i < 12; i++) {
+  ids.push(v4());
+}
+
+export const initialData = {
   nodes: [
     {
-      id: "n0",
+      id: ids[0],
       name: "CO2 Emissions",
       desc: "",
       tags: [],
     },
     {
-      id: "n1",
+      id: ids[1],
       name: "Fossil fuels",
       desc: "",
       tags: [],
     },
     {
-      id: "n2",
+      id: ids[2],
       name: "Global warming",
       desc: "",
       tags: [],
     },
     {
-      id: "n3",
+      id: ids[3],
       name: "Electricity",
       desc: "",
       tags: [],
     },
     {
-      id: "n4",
+      id: ids[4],
       name: "Deforestation",
       desc: "",
       tags: [],
     },
     {
-      id: "n5",
+      id: ids[5],
       name: "CH4 emissions",
       desc: "",
       tags: [],
     },
     {
-      id: "n6",
+      id: ids[6],
       name: "Climate change",
       desc: "",
       tags: [],
     },
     {
-      id: "n7",
+      id: ids[7],
       name: "Agriculture",
       desc: "",
       tags: [],
     },
     {
-      id: "n8",
+      id: ids[8],
       name: "Acid rain",
       desc: "",
       tags: [],
     },
     {
-      id: "n9",
+      id: ids[9],
       name: "Wildlife loss",
       desc: "",
       tags: [],
     },
     {
-      id: "n10",
+      id: ids[10],
       name: "Drought",
       desc: "",
       tags: [],
     },
     {
-      id: "n11",
+      id: ids[11],
       name: "Industry",
       desc: "",
       tags: [],
@@ -75,59 +83,48 @@ export const data = {
   ],
   links: [
     {
-      id: "r0",
-      source: "n1",
-      target: "n0",
+      source: ids[1],
+      target: ids[0],
     },
     {
-      id: "r1",
-      source: "n0",
-      target: "n2",
+      source: ids[0],
+      target: ids[2],
     },
     {
-      id: "r2",
-      source: "n3",
-      target: "n1",
+      source: ids[3],
+      target: ids[1],
     },
     {
-      id: "r3",
-      source: "n4",
-      target: "n0",
+      source: ids[4],
+      target: ids[0],
     },
     {
-      id: "r4",
-      source: "n5",
-      target: "n2",
+      source: ids[5],
+      target: ids[2],
     },
     {
-      id: "r5",
-      source: "n2",
-      target: "n6",
+      source: ids[2],
+      target: ids[6],
     },
     {
-      id: "r6",
-      source: "n7",
-      target: "n5",
+      source: ids[7],
+      target: ids[5],
     },
     {
-      id: "r7",
-      source: "n6",
-      target: "n8",
+      source: ids[6],
+      target: ids[8],
     },
     {
-      id: "r8",
-      source: "n6",
-      target: "n9",
+      source: ids[6],
+      target: ids[9],
     },
     {
-      id: "r9",
-      source: "n6",
-      target: "n10",
+      source: ids[6],
+      target: ids[10],
     },
     {
-      id: "r10",
-      source: "n11",
-      target: "n1",
+      source: ids[11],
+      target: ids[1],
     },
   ],
 };
