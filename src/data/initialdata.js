@@ -20,7 +20,7 @@ export const data = {
     },
     {
       id: "n3",
-      name: "Power generation",
+      name: "Electricity",
       desc: "",
       tags: [],
     },
@@ -32,7 +32,7 @@ export const data = {
     },
     {
       id: "n5",
-      name: "Methane emissions",
+      name: "CH4 emissions",
       desc: "",
       tags: [],
     },
@@ -44,7 +44,7 @@ export const data = {
     },
     {
       id: "n7",
-      name: "Agriculture & meat industry",
+      name: "Agriculture",
       desc: "",
       tags: [],
     },
@@ -56,13 +56,13 @@ export const data = {
     },
     {
       id: "n9",
-      name: "Loss of wildlife",
+      name: "Wildlife loss",
       desc: "",
       tags: [],
     },
     {
       id: "n10",
-      name: "Extreme natural disasters",
+      name: "Drought",
       desc: "",
       tags: [],
     },

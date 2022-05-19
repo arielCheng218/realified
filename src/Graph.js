@@ -1,11 +1,11 @@
-import React, { Component } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { v4 as uuid } from "uuid";
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { data } from "./data/initialdata.js";
 import ForceGraph2D from "react-force-graph-2d";
 
-export default class Graph extends Component {
+export default function Graph() {
   // state = {
   //   dataWritten: false,
   //   select: null,
@@ -16,35 +16,43 @@ export default class Graph extends Component {
   //   console.log(data);
   // }
 
-  constructor(props) {
-    super(props);
-    this.ref = React.createRef;
-    this.ref.current.d3Force("link").distance((link) => {
-      return 30;
-    });
-  }
+  const fgRef = useRef();
 
-  drawNode = (node, ctx, globalScale) => {
-    ctx.textAlign = "center";
-    ctx.fillText(node.name, node.x, node.y);
+  useEffect(() => {
+    const fg = fgRef.current;
+    fg.d3Force("link").distance((link) => {
+      return 85;
+    });
+  }, []);
+
+  const drawNode = (node, ctx, globalScale) => {
     ctx.beginPath();
-    ctx.arc(node.x, node.y, 30, 0, 2 * Math.PI);
+    ctx.arc(node.x, node.y, 25, 0, 2 * Math.PI);
     ctx.stroke();
+    ctx.fillStyle = "#eeeeee";
+    ctx.fill();
+
+    ctx.fillStyle = "#000000";
+    ctx.beginPath();
+    ctx.textAlign = "center";
+    ctx.font = "6px Consolas";
+    ctx.fillText(node.name, node.x, node.y);
+    ctx.strokeStyle = "#222222";
+    ctx.fill();
   };
 
-  render() {
-    return (
-      <div>
-        <ForceGraph2D
-          graphData={data}
-          nodeOpacity={0.99}
-          linkDirectionalArrowLength={3.5}
-          linkDirectionalArrowRelPos={1}
-          ref={this.myRef}
-          onNodeHover={() => (a, b) => null}
-          nodeCanvasObject={this.drawNode}
-        />
-      </div>
-    );
-  }
+  return (
+    <div>
+      <ForceGraph2D
+        graphData={data}
+        nodeOpacity={1}
+        linkDirectionalArrowLength={3.5}
+        linkDirectionalArrowRelPos={1}
+        ref={fgRef}
+        onNodeHover={() => (a, b) => null}
+        nodeCanvasObject={drawNode}
+        nodeLabel={null}
+      />
+    </div>
+  );
 }
