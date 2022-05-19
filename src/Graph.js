@@ -30,7 +30,13 @@ export default class Graph extends Component {
             linkDirectionalParticleColor={() => "red"}
             linkDirectionalParticleWidth={6}
             linkHoverPrecision={10}
-            graphData={data}
+            graphData={{
+              nodes: [{ id: "a" }, { id: "b" }, { id: "c" }],
+              links: [
+                { source: "a", target: "b" },
+                { source: "c", target: "a" },
+              ],
+            }}
             showNavInfo={true}
           />
         </div>
