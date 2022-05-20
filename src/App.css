@@ -11,3 +11,9 @@ body {
   height: 0%;
   transition: max-height 7s;
 }
+
+.resultText {
+  font-size: small;
+  padding-top: 4%;
+  padding-bottom: 6%;
+}

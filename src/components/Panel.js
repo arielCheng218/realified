@@ -1,5 +1,6 @@
 import React from "react";
 import { BsX } from "react-icons/bs";
+import Search from "./Search.js";
 import { panelBgColor, panelTextColor } from "../utils/COLORS.js";
 
 export default function Panel({ node, setSelectedNode }) {
@@ -14,11 +15,10 @@ export default function Panel({ node, setSelectedNode }) {
           display: "inline-block",
           fontFamily: "Avenir",
           paddingTop: "2%",
-          paddingBottom: "2%",
           height: "100%",
         }}
       >
-        Click on the center of a node to select it.
+        <Search setSelectedNode={setSelectedNode} />
       </div>
     );
   }

@@ -1,7 +1,8 @@
 import "./App.css";
 import React, { useState, useEffect, useRef } from "react";
-import Graph from "./components/Graph";
 import Panel from "./components/Panel";
+import Search from "./components/Search";
+import Graph from "./components/Graph";
 
 // TODO:
 // Search
