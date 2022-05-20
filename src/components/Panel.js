@@ -3,8 +3,24 @@ import { BsX } from "react-icons/bs";
 import { panelBgColor, panelTextColor } from "../utils/COLORS.js";
 
 export default function Panel({ node, setSelectedNode }) {
-  if (node == null) {
-    return <div></div>;
+  if (node === null) {
+    return (
+      <div
+        id="panel"
+        style={{
+          backgroundColor: panelBgColor,
+          color: panelTextColor,
+          margin: "0",
+          display: "inline-block",
+          fontFamily: "Avenir",
+          paddingTop: "2%",
+          paddingBottom: "2%",
+          height: "100%",
+        }}
+      >
+        Click on the center of a node to select it.
+      </div>
+    );
   }
 
   const handleClose = () => {

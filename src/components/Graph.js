@@ -103,8 +103,8 @@ export default function Graph({ height, selectedNode, setSelectedNode }) {
         node.x,
         node.y,
         5,
-        node.x + 2,
-        node.y + 2,
+        node.x + 4,
+        node.y + 4,
         20
       );
       g.addColorStop(0, nodeGradientColor);

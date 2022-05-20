@@ -9,5 +9,5 @@ body {
   padding-left: 2%;
   padding-right: 2%;
   height: 0%;
-  transition: height 7s;
+  transition: max-height 7s;
 }
