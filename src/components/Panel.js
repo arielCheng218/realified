@@ -1,5 +1,6 @@
 import React from "react";
 import { BsX } from "react-icons/bs";
+import { panelBgColor, panelTextColor } from "../utils/COLORS.js";
 
 export default function Panel({ node, setSelectedNode }) {
   if (node == null) {
@@ -14,11 +15,13 @@ export default function Panel({ node, setSelectedNode }) {
     <div
       id="panel"
       style={{
-        backgroundColor: "#000000",
-        color: "#ffffff",
+        backgroundColor: panelBgColor,
+        color: panelTextColor,
         margin: "0",
         display: "inline-block",
-        paddingBottom: "40px",
+        fontFamily: "Avenir",
+        paddingBottom: "2%",
+        height: "100%",
       }}
     >
       <BsX fontSize={30} style={{ paddingTop: "20px" }} onClick={handleClose} />

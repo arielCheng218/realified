@@ -8,14 +8,21 @@ import {
   doc,
   getDocs,
 } from "firebase/firestore";
+import {
+  nodeBgColor,
+  nodeTextColor,
+  selectedNodeBgColor,
+  selectedNodeTextColor,
+  canvasBgColor,
+  nodeGradientColor,
+} from "../utils/COLORS";
 import { initialData } from "../data/initialdata.js";
 import { db } from "../firebase-config.js";
 import ForceGraph2D from "react-force-graph-2d";
 
-export default function Graph({ height, setSelectedNode }) {
+export default function Graph({ height, selectedNode, setSelectedNode }) {
   // state variables
   const [data, setData] = useState({ nodes: [], links: [] });
-  const [fetched, setFetched] = useState(false);
 
   const fgRef = useRef();
 
@@ -66,7 +73,7 @@ export default function Graph({ height, setSelectedNode }) {
 
   const getCollectionDocs = async (c) => {
     const q = query(collection(db, c));
-    const querySnapshot = await getDocs(q).then(setFetched(true));
+    const querySnapshot = await getDocs(q);
     var queryData = [];
     querySnapshot.forEach((doc) => {
       queryData.push({ ...doc.data(), id: doc.id });
@@ -82,18 +89,41 @@ export default function Graph({ height, setSelectedNode }) {
   };
 
   const drawNode = (node, ctx, globalScale) => {
+    // draw circle
     ctx.beginPath();
     ctx.arc(node.x, node.y, 25, 0, 2 * Math.PI);
     ctx.stroke();
-    ctx.fillStyle = "#eeeeee";
+    if (node === selectedNode) {
+      ctx.fillStyle = selectedNodeBgColor;
+    } else {
+      ctx.fillStyle = nodeBgColor;
+      ctx.fill();
+      // gradient
+      var g = ctx.createRadialGradient(
+        node.x,
+        node.y,
+        5,
+        node.x + 2,
+        node.y + 2,
+        20
+      );
+      g.addColorStop(0, nodeGradientColor);
+      g.addColorStop(1, canvasBgColor);
+      ctx.fillStyle = g;
+      ctx.fill();
+    }
     ctx.fill();
 
-    ctx.fillStyle = "#000000";
+    // text
+    if (node === selectedNode) {
+      ctx.fillStyle = selectedNodeTextColor;
+    } else {
+      ctx.fillStyle = nodeTextColor;
+    }
     ctx.beginPath();
     ctx.textAlign = "center";
     ctx.font = "6px Consolas";
     ctx.fillText(node.name, node.x, node.y);
-    ctx.strokeStyle = "#222222";
     ctx.fill();
   };
 
@@ -104,7 +134,7 @@ export default function Graph({ height, setSelectedNode }) {
         height={height}
         linkWidth={2}
         onNodeClick={(node) => setSelectedNode(node)}
-        backgroundColor={"#eeeeee"}
+        backgroundColor={canvasBgColor}
         ref={fgRef}
         nodeCanvasObject={drawNode}
         nodeLabel={null}
